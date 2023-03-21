@@ -1,0 +1,51 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract ROGU {
+    string public name = "ROGU Token";
+    string public symbol = "ROGU";
+    uint256 public totalSupply = 800000000 * 10 ** 18; // 800 million tokens with 18 decimal places
+    uint8 public decimals = 18;
+
+    mapping(address => uint256) public balanceOf;
+    mapping(address => mapping(address => uint256)) public allowance;
+
+    // Events
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+    event TokensLocked(address indexed holder, uint256 indexed amount, uint256 indexed unlockDate);
+
+    // Wallet addresses
+    address public seedAddress;
+    address public privateAddress;
+    address public publicAddress;
+    address public teamAddress;
+    address public advisorsAddress;
+    address public foundationAddress;
+    address public communityAddress;
+    address public liquidityAddress;
+
+    // Token allocation
+    uint256 public seedTokens = 56000000 * 10 ** 18; // 56 million tokens with 18 decimal places
+    uint256 public privateTokens = 80000000 * 10 ** 18; // 80 million tokens with 18 decimal places
+    uint256 public publicTokens = 32000000 * 10 ** 18; // 32 million tokens with 18 decimal places
+    uint256 public teamTokens = 136000000 * 10 ** 18; // 136 million tokens with 18 decimal places
+    uint256 public advisorsTokens = 24000000 * 10 ** 18; // 24 million tokens with 18 decimal places
+    uint256 public foundationTokens = 288000000 * 10 ** 18; // 288 million tokens with 18 decimal places
+    uint256 public communityTokens = 120000000 * 10 ** 18; // 120 million tokens with 18 decimal places
+    uint256 public liquidityTokens = 64000000 * 10 ** 18; // 64 million tokens with 18 decimal places
+
+    // Vesting periods
+    uint256 public seedUnlockDate = block.timestamp + 2 years; // SEED unlock after 2 years
+    uint256 public privateUnlockDate = block.timestamp + 22 months; // Private sale unlock after 22 months
+    uint256 public publicUnlockDate = block.timestamp + 10 months; // Public sale unlock after 10 months
+    uint256 public teamCliffPeriod = 1 years; // Team cliff period is 1 year
+    uint256 public teamVestingPeriod = 3 years; // Team vesting period is 3 years
+    uint256 public advisorsCliffPeriod = 6 months; // Advisors cliff period is 6 months
+    uint256 public advisorsVestingPeriod = 28 months; // Advisors vesting period is 28 months
+    uint256 public foundationVestingPeriod = 48 months; // Foundation vesting period is 48 months
+    uint256 public communityVestingPeriod = 30 months; // Community vesting period is 30 months
+    uint256 public liquidityVestingPeriod = 16 months; // Liquidity vesting period is 16 months
+
+    // Constructor
+    constructor(address _seedAddress, address _privateAddress, address _publicAddress, address _teamAddress,
